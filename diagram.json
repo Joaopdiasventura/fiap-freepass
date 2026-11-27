@@ -1,0 +1,235 @@
+{
+  "version": 1,
+  "author": "João Paulo Dias",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 4,
+      "left": -80,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": 78.3,
+      "left": -532.1,
+      "attrs": {
+        "distance": "200"
+      }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "light",
+      "top": -35.2,
+      "left": -469.6,
+      "attrs": {
+        "lux": "400"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "attentionLed",
+      "top": 246,
+      "left": -140.2,
+      "attrs": {
+        "color": "yellow"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "attentionResistor",
+      "top": 321.6,
+      "left": -163.75,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "criticalLed",
+      "top": 225,
+      "left": -65,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "criticalResistor",
+      "top": 321.6,
+      "left": -77.35,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 232.8,
+      "left": 222.6,
+      "rotate": 180,
+      "attrs": {
+        "volume": "0.3"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "esp:5V",
+      "ultrasonic:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "ultrasonic:GND",
+      "black",
+      [
+        "h-49.41",
+        "v34.4",
+        "h-306"
+      ]
+    ],
+    [
+      "esp:26",
+      "ultrasonic:TRIG",
+      "green",
+      [
+        "h-97.41",
+        "v130.4",
+        "h-278"
+      ]
+    ],
+    [
+      "esp:27",
+      "ultrasonic:ECHO",
+      "blue",
+      [
+        "h-78.21",
+        "v101.6",
+        "h-287.2"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "light:VCC",
+      "red",
+      [
+        "v-52",
+        "h-222.21"
+      ]
+    ],
+    [
+      "esp:GND.2",
+      "light:GND",
+      "black",
+      [
+        "h17.64",
+        "v-42.4",
+        "h-316.8",
+        "v0.4"
+      ]
+    ],
+    [
+      "esp:34",
+      "light:AO",
+      "purple",
+      [
+        "h-30.21",
+        "v-61.6",
+        "h-153.6",
+        "v0.7"
+      ]
+    ],
+    [
+      "esp:18",
+      "attentionLed:A",
+      "yellow",
+      [
+        "h56.04",
+        "v255.2",
+        "h-192"
+      ]
+    ],
+    [
+      "attentionLed:C",
+      "attentionResistor:1",
+      "yellow",
+      []
+    ],
+    [
+      "attentionResistor:2",
+      "esp:GND.2",
+      "black",
+      [
+        "v37.2",
+        "h240",
+        "v-360.8"
+      ]
+    ],
+    [
+      "esp:19",
+      "criticalLed:A",
+      "red",
+      [
+        "h27.24",
+        "v188",
+        "h-88"
+      ]
+    ],
+    [
+      "criticalLed:C",
+      "criticalResistor:1",
+      "red",
+      []
+    ],
+    [
+      "criticalResistor:2",
+      "esp:GND.3",
+      "black",
+      [
+        "h79.85",
+        "v-224.4"
+      ]
+    ],
+    [
+      "esp:25",
+      "buzzer:2",
+      "orange",
+      [
+        "h-116.61",
+        "v303.2",
+        "h403.2",
+        "v-201.6",
+        "h49.4"
+      ]
+    ],
+    [
+      "esp:GND.3",
+      "buzzer:1",
+      "black",
+      []
+    ]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "lf"
+  },
+  "dependencies": {}
+}
